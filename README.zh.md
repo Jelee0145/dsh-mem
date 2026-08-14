@@ -50,9 +50,24 @@ node dsh-memory/tests/provider-smoke.mjs  # Provider 全流程烟雾(持久化/�
 
 ## 安装进 profile
 
+从 **npm registry** 安装(包名 `dsh-mem`):
+
 ```sh
-dsh plugin --profile demo add ./dsh-memory   # 本地目录安装
-dsh plugin --profile demo add dsh-mem        # 从 npm 安装(发布后)
+dsh plugin --profile <name> add dsh-mem
+```
+
+> `dsh plugin add` 是 dsh 安装插件的标准方式:它从 npm 解析包(经 pnpm)装进 profile 并注册 bundle 层。**不要**用 `npm install dsh-mem`——那只会把它装成普通依赖,不会激活任何 profile 层。
+
+从 git 安装(会跑包自带的 `prepare` 构建;首次安装需在 profile 的 `pnpm-workspace.yaml` 里授权构建):
+
+```sh
+dsh plugin --profile demo add github:Jelee0145/dsh-mem
+```
+
+或本地目录安装:
+
+```sh
+dsh plugin --profile demo add ./dsh-memory
 ```
 
 首次使用会初始化 `demo` profile,`dsh` 把这个包追加进 `dsh.profile.bundles`(位于 `@deepseek-ai/dsh-base` 之后),pnpm 链接本目录并安装它声明的 `@deepseek-ai/dsh-*` 依赖。验证层与启动:

@@ -6,11 +6,13 @@ An out-of-tree **bundle** plugin for [DeepSeek Harness](https://github.com/deeps
 
 ## Install
 
-Install the published npm package into any profile:
+Install from the **npm registry** (published as `dsh-mem`):
 
 ```sh
 dsh plugin --profile <name> add dsh-mem
 ```
+
+> `dsh plugin add` is the dsh way to install a plugin: it resolves the package from npm (via pnpm) into the profile and registers its bundle layer. Do **not** use `npm install dsh-mem` — that installs the package as a plain dependency without activating any profile layer.
 
 From git instead (runs the package's self-contained `prepare` build; the first install asks you to allow the build in the profile's `pnpm-workspace.yaml`):
 

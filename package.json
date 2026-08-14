@@ -1,6 +1,6 @@
 {
   "name": "dsh-mem",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Cross-session long-term memory for DeepSeek Harness (dsh): durable JSON-file memory store with memory_save / memory_recall / memory_forget / memory_list model tools, installable as a dsh bundle.",
   "type": "module",
   "main": "lib/provider.js",
