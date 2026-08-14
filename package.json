@@ -1,0 +1,67 @@
+{
+  "name": "dsh-mem",
+  "version": "0.1.0",
+  "description": "Cross-session memory capability seam for DeepSeek Harness: a ctx.memory Service Definition, a durable file-backed provider, and the model-facing memory_save / memory_recall / memory_forget / memory_list tools, distributed as an installable dsh bundle.",
+  "type": "module",
+  "main": "lib/provider.js",
+  "types": "lib/provider.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/provider.d.ts",
+      "default": "./lib/provider.js"
+    },
+    "./provider": {
+      "types": "./lib/provider.d.ts",
+      "default": "./lib/provider.js"
+    },
+    "./memory": {
+      "types": "./lib/memory.d.ts",
+      "default": "./lib/memory.js"
+    },
+    "./tool": {
+      "types": "./lib/tool.d.ts",
+      "default": "./lib/tool.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.check.json"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness-plugin",
+    "plugin",
+    "bundle",
+    "memory",
+    "cross-session"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-atomic-write": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-brand": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.6",
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^6.0.3"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

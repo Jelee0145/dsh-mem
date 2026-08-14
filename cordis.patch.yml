@@ -1,0 +1,19 @@
+# The dsh-mem bundle patch: one durable cross-session memory seam on top of
+# any dsh profile. Applied after the profile's bundle layers; the rows here are
+# addressed by the profile's own cordis.patch.yml and --patch overlays (a patch
+# replaces a row's whole config, so an override restates every key it keeps).
+#
+# `dshHomePath` is exposed to Loader !!js expressions by the boot sequence, so
+# the provider stores its memory.json under the harness home by default; a
+# deployment can point `root` elsewhere by overriding the whole row config.
+
+- insert:
+    - id: memory
+      name: dsh-mem/provider
+      config:
+        root: !!js dshHomePath('memory')
+
+    - id: tool-memory
+      name: dsh-mem/tool
+      config:
+        maxRecallLimit: 20
